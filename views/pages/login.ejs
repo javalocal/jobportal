@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sigin-Javaloca</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          rel="stylesheet">
+          <link rel="stylesheet" href="/css/tamplate_1.css">
+          <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          rel="stylesheet">
+</head>
+
+<body>
+  <header>
+      <div class="container-fluid p-0">
+      <%- include('../layouts/navbar.ejs'); %>
+      </div>
+  </header>
+      <br>
+      <section class="section-1"> 
+        <div class="container text-center">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="pray">
+                        <img src="/img/login2.jpg" alt="pantai" >
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="panel text-left">
+                        <h1>Sign in</h1>
+                         
+                            <form method="post" action="/account/login">
+                      
+                              <div class="form-group">
+                                <label for="inputEmail">Email</label>
+                                <input type="Email" class="form-control" name="email" id="inputEmail" placeholder="javaloca@example.com">
+                              </div>
+                            <div class="form-group">
+                              <label for="inputPassword">Password</label>
+                              <input type="password" class="form-control" name="password" id="inputPassword" placeholder="password">
+                            </div>  
+                            <button type="submit" class="btn btn-info">Sign in</button>
+                            <% if(locals.error) { %>
+                              <span class="text-danger pl-2" style="font-size: 2.2vh"><%= error %></span>
+                              <% } %>
+                                <a class="signup__link" style="color: rgb(91, 169, 143);" href="/account/register">I am not a member</a>
+                                
+                           
+                          </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        </section>
+        
+              <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</body>
+</html>
