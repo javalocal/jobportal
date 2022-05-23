@@ -1,20 +1,28 @@
 {
   "name": "webnya",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
-    "dev":"nodemon index.js",
+    "dev": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Team kita",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.20.0",
-    "ejs": "^3.1.7",
-    "express": "^4.17.3",
-    "express-session": "^1.17.2",
-    "mongoose": "^6.3.1",
-    "nodemon": "^2.0.15"
-  }
+    "ejs": "^3.1.8",
+    "express": "^4.18.1",
+    "express-session": "^1.17.3",
+    "mongoose": "^6.3.4",
+    "nodemon": "^2.0.16"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/javalocal/jobportal.git"
+  },
+  "bugs": {
+    "url": "https://github.com/javalocal/jobportal/issues"
+  },
+  "homepage": "https://github.com/javalocal/jobportal#readme",
+  "description": ""
 }
