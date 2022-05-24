@@ -35,20 +35,11 @@ app.use(function(req, res, next) {
 
 const indexRouter = require('./routes/index');
 const accountRouter= require('./routes/account');
-// const accountRouter = require('./routes/account');
-// const ThingtodoRouter = require('./routes/Thingtodo');
-// const transprtRouter =require('./routes/transport');
-// const promoRouter= require('./routes/promo');
-// const akomodasiRouter= require('./routes/Hotelbooking');
-// const mybookRouter=require('./routes/mybooking');
+const companyRouter= require('./routes/company');
 
 app.use('/', indexRouter);
 app.use('/account', accountRouter);
-// app.use('/Thingtodo',ThingtodoRouter);
-// app.use('/transport', transprtRouter);
-// app.use('/promo', promoRouter);
-// app.use('/accommodation', akomodasiRouter);
-// app.use('/mybook', mybookRouter);
+app.use('/company', companyRouter);
 
 // const port = process.env.PORT || 3000
 app.listen('3000', ()=> {

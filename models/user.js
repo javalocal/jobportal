@@ -31,6 +31,10 @@ const userSchema = mongoose.Schema({
         required: true
     },
     pendidikan_terakhir: {
+        type: Number,
+        required: false
+    },
+    pendidikan_text: {
         type: String,
         required: false
     },
@@ -43,6 +47,10 @@ const userSchema = mongoose.Schema({
         required: false
     },
     pengalaman: {
+        type: Number,
+        required: false
+    },
+    pengalaman_text: {
         type: String,
         required: false
     },
@@ -61,6 +69,10 @@ const userSchema = mongoose.Schema({
     },
     name: {
         type: String,
+        required: false
+    },
+    umur: {
+        type: Number,
         required: false
     },
 })

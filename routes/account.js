@@ -1,10 +1,17 @@
 const express = require('express');
+const req = require('express/lib/request');
 const res = require('express/lib/response');
 const User = require('../models/user');
-const router = express.Router()
+const router = express.Router();
+const fungsi=require('../models/fungsi_text')
+const func=new fungsi();
+var iddata;
+
+
 
 router.get('/login_home', (req, res) => {
     res.render('pages/login')
+    console.log(func.name);
 })
 
 router.get('/register', (req, res) => {
@@ -17,19 +24,26 @@ router.post('/login', async (req,res) => {
     var emailok;
     var passwordok;
     var role;
+    var name;
+    var id;
     const data = await User.find({email:email_});
     await data.forEach((account)=>{
         emailok=account.email;
         passwordok=account.password;
         role=account.role;
+        id=account._id;
+        name=account.name
     });
+    console.log(role);
+    console.log(emailok); 
     if(email_==emailok){
         if(password_==passwordok){
-            // req.session.isLoggedIn = true;
-            if(role="co"){
-                console.log(role);
-                console.log(emailok); 
-                res.redirect('/company')
+            req.session.isLoggedIn = true;
+            
+            if(role=="co"){
+                res.redirect('/company/home',{iddata: id})
+            func.savedata(name,id);
+            console.log(func.name);
             }else{
                 res.redirect('/lowongan') 
             }
@@ -111,8 +125,12 @@ router.post('/regisjob',async (req, res) => {
     const email1 = req.body.email;
     const password = req.body.password;
     const conpassword = req.body.passwordcon;
+    const edu_text=func.endu(pndk_terakhir);
+    const peng_text = func.peng(pengalaman);
     var email2;
-    const umur = diff_years((new Date(tgl_lahir_)),(new Date()))
+
+    
+    const umur = diff_years((new Date(tgl_lahir_)),(new Date()));
     console.log(umur);
     const data = await User.find({email:email1});
     await data.forEach((account)=>{
@@ -138,7 +156,11 @@ router.post('/regisjob',async (req, res) => {
                 email: email1,
                 address: alamat,
                 provinsi: prov,
-                password: password
+                password: password,
+                umur : umur,
+                pendidikan_text: edu_text,
+                pengalaman_text: peng_text
+
     
             })
             await user.save((err, res) => {

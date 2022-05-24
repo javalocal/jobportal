@@ -22,8 +22,6 @@ router.get('/Jobslist', (req, res) => {
     res.render('pages/listjobsvan')
 })
 
-router.get('/register', (req, res) => {
-    res.render('pages/register')
-})
+
 
 module.exports = router;
