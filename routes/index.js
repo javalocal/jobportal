@@ -6,7 +6,7 @@ router.get('/', (req, res) => {
 })
 
 router.get('/lowongan', (req, res) => {
-    res.render('pages/job-resoult1')
+    res.render('pages/joblist')
 })
 
 router.get('/Myapplication', (req, res) => {
