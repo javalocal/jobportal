@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="tamplate_1.css">    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg">
+            <a class="navbar-brand" href="/"><img src="logo.png" width="175px" alt=""></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="material-icons" style="font-size: 35px;">menu</span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+              <div class="mr-auto"></div>
+                <div class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/lowongan">Job Vacancy <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="/company">Company <span class="sr-only">(current)</span></a>
+                  </li>
+                    
+                      <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          About
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="/Faq">Faq</a>
+                            <a class="dropdown-item" href="/promo">About Us</a>
+                          <a class="dropdown-item" href="/mybook">Job Applicant</a>
+                          <a class="dropdown-item" href="/Thingtodo">Partner Company</a>
+                        </div>
+                      </li>
+    
+                      <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          Account
+                        </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                              <% if(locals.isLoggedIn) { %>
+                                <a class="dropdown-item" href='/account/logout'>Logout</a>
+                                <% } else { %>
+                              <a class="dropdown-item" href="/account/login_home">Sign in</a>
+                              <a class="dropdown-item" href="/account/register">Sign up</a>
+                              <% } %>
+                          </div>
+                    </li>
+                    
+              </div>
+            </div>
+          </nav>
+    </header>
+
+    
+    <div class="search">
+        <div class="search-container">
+            <div class="input-container">
+                <i class="fas fa-search"></i>
+                <input type="text" id="filter-jobs" name="filter-jobs" placeholder="filter by search">
+            </div>
+            <div class="btn-container">
+                <span>Find Jobs</span>
+            </div>
+        </div>
+    </div>
+    <div class="job-container">
+        <h3>Showing All Jobs</h3>
+
+        
+                <section class="job-list id=jobs">
+                    <div class="job-card">
+                        <div class="job-name">
+                            <div class="job-detail">
+                                <h2>PT.pungut</h2>
+                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry</p>
+                            </div>
+                            <div class="container">
+                            <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#demo">Detail</button>
+                            <div id="demo" class="collapse">
+                                <div class="container-fluid p-4">
+                                    <div class="container bg-light boxtext ">
+                                        <div class="row" style="padding-left: 0%">
+                                          <div class="col-md-4">
+                                            <a class="navbar-brand" href="/"><img src="BrandActivationStaff.png" width="175px" alt=""></a>
+                                            <h5>Brand Activation Staff</h5>
+                                            <p>PT.Mandiri Jaya</p>
+                                            <p>Jakarta Barat</p>
+                                        </div>   
+                                            </div>
+                                            </div>
+                                            <div class="row py-5 ">
+                                                <div class="col-md-12 col-sm-12">
+                                                    <h5 class="text-left">Deskripsi Pekerjaan</h5>
+                                                    <br>
+                                                    <div class="row" style="padding-left: 0%;">
+                                                        <div class="col-md-12">
+                                                            <h6>Deskripsi Pekerjaan</h6>
+                                                            <li>Bertanggung jawab atas persiapan & pelaksanaan pemotretan & acara</li>
+                                                            <li>Mengedit Video</li>
+                                                            <li>Membantu dalam menyusun konsep & penganggaran untuk acara</li>
+                                                        </div>
+                                                        </div>
+                                                        <br>
+                                                        <div class="row" style="padding-left: 0%;">
+                                                        <div class="col-md-12 col-sm-12">
+                                                            <h6>Kualifikasi</h6>
+                                                            <li>Pria & Wanita.</li>
+                                                            <li>Berusia minimal 17 - 50 tahun.</li>
+                                                            <li>Jujur, Ramah & Mampu berkomunikasi dengan baik</li>
+                                                            <li> Berpenampilan rapih & bersih</li>
+                                                        </div>
+                                                        </div>
+                                                        <br>
+                                                        <div class="row" style="padding-left: 0%;">
+                                                          <div class="col-md-12 col-sm-12">
+                                                              <h5 class="text-left">Informasi Tambahan</h5>
+                                                              </div>
+                                                              </div>
+                                                              </div>
+                                                              <div class="row" style="padding-left: 1%;">
+                                                                <div class="col-md-5">
+                                                                  <h5>Tingkat Pekerjaan</h5>
+                                                                  <li>Pegawai</li>
+                                                              </div>
+                                                              <div class="col-md-5 col-sm-6">
+                                                                  <h5>Kualifikasi</h5>
+                                                                  <li>Sarjana(S1)</li>
+                                                              </div>
+                                                              <div class="col-md-5 col-sm-6">
+                                                                  <h5>Jenis Pekerjaan</h5>
+                                                                  <li>Penuh Waktu</li>
+                                                              </div>
+                                                              <div class="col-md-5 col-sm-6">
+                                                                <h5>Spesialisasi Pekerjaan</h5>
+                                                                <li>Penjualan / Pemasaran, Pemasaran/Pengembangan Bisnis</li>
+                                                            </div>
+                                                                 
+                                                              </div>
+                                        </div>
+                                       
+                                 
+                                  <div class="row py-5 ">
+                                    <div class="col-md-12 col-sm-12">
+                                        <br>
+                                        <br>
+                                        <br>
+                                        <div class="row" style="padding-left: 18%;">
+                                            
+                                          <div class="card">
+                                            <div class="card-body">
+                                              <h3 class="card-title"><a href="paymenthotel.html" class="btn btn-primary">apply now</a></h3>
+                                            </div>
+                                          </div>
+                                           
+                                        </div>
+                                    </div>
+                            
+                            </div>
+                            
+                                    </div>
+                            </div>
+                          </div>
+                            </div> 
+                        </div>
+                        </div>
+                    
+                        
+                </section>
+
+
+
+
+
+
+        </div>
+        
+    
+        
+</body>
+</html>
