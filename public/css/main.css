@@ -97,3 +97,19 @@ body{
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
 }
+.job-label{
+    display: flex;
+    justify-content: space-between;
+    margin-right: 50px;
+}
+
+.job-label >a {
+   padding: 0 1rem;
+   margin: 0.2rem;
+   text-decoration: none;
+   border-radius: 20px;
+   font-size: 0.8rem;
+
+}
+
+
