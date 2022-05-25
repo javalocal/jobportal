@@ -5,18 +5,15 @@ router.get('/', (req, res) => {
     res.render('pages/index')
 })
 
-router.get('/lowongan', (req, res) => {
-    res.render('pages/pelamar')
+router.get('/company', (req, res) => {
+    res.render('pages/Company')
 })
 
-router.get('/Myapplication', (req, res) => {
-    res.render('pages/my_application')
+router.get('/Aboutus', (req, res) => {
+    res.render('pages/Aboutus')
 })
 
 
-router.get('/Jobslist', (req, res) => {
-    res.render('pages/listjobsvan')
-})
 
 
 

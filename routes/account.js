@@ -7,7 +7,7 @@ const fungsi=require('../models/fungsi_text')
 const addid=require('../models/save_id')
 // const addid=data();
 const func=new fungsi();
-var iddata;
+
 
 
 
@@ -44,7 +44,7 @@ router.post('/login', async (req,res) => {
                 res.redirect('/company/home')
             console.log(addid.id);
             }else{
-                res.redirect('/lowongan') 
+                res.redirect('/jobvacancy') 
             }
             
         }else{

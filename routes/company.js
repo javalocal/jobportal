@@ -6,14 +6,20 @@ const fungsi=require('../models/fungsi_text')
 const addid=require('../models/save_id')
 const func=new fungsi();
 const User = require('../models/user');
+const req = require('express/lib/request');
 
 router.get('/add', (req, res) => {
     res.render('pages/addjobs')
     console.log(addid.id);
 })
 
-router.get('/home', (req, res) => {
-    res.render('pages/Company')
+router.get('/home', async(req, res)=>{
+const data = await Jobs.find({id_com:addid.id})
+var adaapaga=false;
+if (data!=null){
+    adaapaga=true;
+}
+res.render('pages/Company', {job:data, cek:adaapaga})
 })
 
 router.post('/addjobs', async(req, res) => {
