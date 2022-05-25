@@ -3,11 +3,13 @@ const session = require('express-session');
 const router = express.Router();
 const Jobs = require ('../models/job');
 const fungsi=require('../models/fungsi_text')
-
+const addid=require('../models/save_id')
+const func=new fungsi();
+const User = require('../models/user');
 
 router.get('/add', (req, res) => {
     res.render('pages/addjobs')
-    console.log(fungsi.name);
+    console.log(addid.id);
 })
 
 router.get('/home', (req, res) => {
@@ -29,7 +31,7 @@ const location =req.body.lokasi;
 const city = req.body.city;
 var name
 
-const data = await User.find({_id:document.cookie});
+const data = await User.find({_id:addid.id});
     await data.forEach((account)=>{
     name = account.name
     });
@@ -37,7 +39,7 @@ const data = await User.find({_id:document.cookie});
 console.log(name);
 const job = new Jobs({
     divisi:divisi,
-    id_com:document.cookie,
+    id_com:addid.id,
     name_com:name,
     salary:gaji,
     location:location,

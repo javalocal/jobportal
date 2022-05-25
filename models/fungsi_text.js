@@ -2,12 +2,6 @@
     module.exports = function conf() {
         this.pend_text;
         this.peng_text;
-        this.name=null;
-        this.id=null;
-        this.savedata=function(name, id){
-            this.name =name;
-            this.id=id;
-        }
             this.endu=function(pndk_terakhir) {
                 if(pndk_terakhir==1){
                     this.pend_text ="SMA/Sederajat";

@@ -6,16 +6,11 @@ router.get('/', (req, res) => {
 })
 
 router.get('/lowongan', (req, res) => {
-    res.render('pages/job-resoult1')
+    res.render('pages/pelamar')
 })
 
 router.get('/Myapplication', (req, res) => {
     res.render('pages/my_application')
-})
-
-
-router.get('/company', (req, res) => {
-    res.render('pages/Company')
 })
 
 

@@ -4,6 +4,8 @@ const res = require('express/lib/response');
 const User = require('../models/user');
 const router = express.Router();
 const fungsi=require('../models/fungsi_text')
+const addid=require('../models/save_id')
+// const addid=data();
 const func=new fungsi();
 var iddata;
 
@@ -34,16 +36,13 @@ router.post('/login', async (req,res) => {
         id=account._id;
         name=account.name
     });
-    console.log(role);
-    console.log(emailok); 
     if(email_==emailok){
         if(password_==passwordok){
-            req.session.isLoggedIn = true;
-            
+            // req.session.isLoggedIn = true;
+            addid.id=id;
             if(role=="co"){
-                res.redirect('/company/home',{iddata: id})
-            func.savedata(name,id);
-            console.log(func.name);
+                res.redirect('/company/home')
+            console.log(addid.id);
             }else{
                 res.redirect('/lowongan') 
             }

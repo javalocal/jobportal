@@ -26,10 +26,10 @@ const userSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    u_date: {
-        type: Date,
-        required: true
-    },
+    // u_date: {
+    //     type: Date,
+    //     required: true
+    // },
     last_edu: {
         type: String,
         required: true
