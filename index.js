@@ -36,10 +36,12 @@ app.use(function(req, res, next) {
 const indexRouter = require('./routes/index');
 const accountRouter= require('./routes/account');
 const companyRouter= require('./routes/company');
+const beginRouter= require('./routes/begin');
 
 app.use('/', indexRouter);
 app.use('/account', accountRouter);
 app.use('/company', companyRouter);
+app.use('/begin', beginRouter);
 
 // const port = process.env.PORT || 3000
 app.listen('3000', ()=> {

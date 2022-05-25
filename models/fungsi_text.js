@@ -6,7 +6,7 @@
         this.id=null;
         this.savedata=function(name, id){
             this.name =name;
-            this.id=id;
+            this.id =id;
         }
             this.endu=function(pndk_terakhir) {
                 if(pndk_terakhir==1){

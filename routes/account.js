@@ -41,7 +41,7 @@ router.post('/login', async (req,res) => {
             req.session.isLoggedIn = true;
             
             if(role=="co"){
-                res.redirect('/company/home',{iddata: id})
+                res.redirect('/company/home')
             func.savedata(name,id);
             console.log(func.name);
             }else{

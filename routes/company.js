@@ -3,11 +3,11 @@ const session = require('express-session');
 const router = express.Router();
 const Jobs = require ('../models/job');
 const fungsi=require('../models/fungsi_text')
-
+const asle=new fungsi();
 
 router.get('/add', (req, res) => {
     res.render('pages/addjobs')
-    console.log(fungsi.name);
+    console.log(asle.name);
 })
 
 router.get('/home', (req, res) => {
@@ -30,7 +30,7 @@ const city = req.body.city;
 var name
 
 const data = await User.find({_id:document.cookie});
-    await data.forEach((account)=>{
+     data.forEach((account)=>{
     name = account.name
     });
 
