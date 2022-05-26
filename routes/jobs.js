@@ -24,10 +24,7 @@ var peng
     peng=account.pengalaman;
     edu=account.pendidikan_terakhir;
     });
-
     const dataJobs = await Jobs.find({edu:{$lte:edu}, pengalaman:{$gte:peng}});
-    // console.log(dataUser)
-    // console.log(dataJobs)
     res.render('pages/joblist',{job:dataJobs, val:null});
 })
 
@@ -35,7 +32,7 @@ router.post('/search', async(req,res)=>{
     const search =req.body.search;
     console.log(search)
     var edu;
-var peng
+    var peng
     const dataUser = await User.find({_id:addid.id});
     await dataUser.forEach((account)=>{
     peng=account.pengalaman;
@@ -50,7 +47,9 @@ var peng
 router.get('/apply/:id', async(req,res)=>{
     const idjob= req.params.id;
     var edu,peng,name, idcek, divisi,company;
+    console.log(idjob)
     const dataUser= await User.find({_id:addid.id});
+    console.log(dataUser)
     await dataUser.forEach((account)=>{
         peng=account.pengalaman_text;
         edu=account.pendidikan_text;

@@ -62,10 +62,10 @@ router.post('/login', async (req,res) => {
             }
             
         }else{
-            res.render('pages/signin', {jenis:"login",error: 'Wrong Password'});
+            res.render('pages/login', {jenis:"login",error: 'Wrong Password'});
         }
     }else{
-        res.render('pages/signin', {jenis:"login",error: 'Wrong Password or Email'});
+        res.render('pages/login', {jenis:"login",error: 'Wrong Password or Email'});
     }
 })
 
@@ -140,6 +140,8 @@ router.post('/regisjob',async (req, res) => {
     const email1 = req.body.email;
     const password = req.body.password;
     const conpassword = req.body.passwordcon;
+    const nomor = req.body.nomor;
+    const ket = req.body.ket;
     const edu_text=func.endu(pndk_terakhir);
     const peng_text = func.peng(pengalaman);
     var email2;
@@ -169,6 +171,8 @@ router.post('/regisjob',async (req, res) => {
                 pengalaman: pengalaman,
                 skill:skill,
                 email: email1,
+                nomor: nomor,
+                ket: ket,
                 address: alamat,
                 provinsi: prov,
                 password: password,

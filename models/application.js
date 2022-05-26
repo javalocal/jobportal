@@ -22,7 +22,6 @@ const userSchema = mongoose.Schema({
     iduser: {
         type: String,
         required: true,
-        unique: true
     },
     name: {
         type: String,
