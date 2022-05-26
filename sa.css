@@ -1,4 +1,4 @@
-/* Import Font Dancing Script */
+
 @import url(https://fonts.googleapis.com/css?family=Dancing+Script);
 
 * {
@@ -11,7 +11,6 @@ body {
     overflow: hidden;
 }
 
-/* NavbarTop */
 .navbar-top {
     background-color: #fff;
     color: #333;
@@ -55,9 +54,6 @@ body {
     position: relative;
 }
 
-/* End */
-
-/* Sidenav */
 .sidenav {
     background-color: #fff;
     color: #333;
@@ -120,9 +116,6 @@ body {
     width: 65%;
 }
 
-/* End */
-
-/* Main */
 .main {
     margin-top: 2%;
     margin-left: 29%;
@@ -196,5 +189,3 @@ body {
 .fa-snapchat:hover {
     color: #fffb01 !important;
 }
-
-/* End */
