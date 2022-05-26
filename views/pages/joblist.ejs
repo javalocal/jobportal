@@ -6,11 +6,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/main.css">
-    <link rel="stylesheet" href="tamplate_1.css">    
+    <link rel="stylesheet" href="/css/tamplate_1.css">    
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          rel="stylesheet">
 </head>
 <body>
   <header>
@@ -18,157 +20,157 @@
     <%- include('../layouts/navbarjob.ejs'); %>
     </div>
 </header>  
-
-    
     <div class="search">
-        <div class="search-container">x
-            <div class="input-container">
-                <i class="fas fa-search"></i>
-                <input type="text" id="filter-jobs" name="filter-jobs" placeholder="filter by search">
+      <form action="/jobvacancy/search" method="post">
+        <div class="search-container">
+          <div class="input-container">
+              <i class="fas fa-search"></i>
+              <input type="text" id="filter-jobs" name="search" placeholder="filter by search">
+          </div>
+          <button type="submit" class="btn btn-info">Find Jobs</button>
+      </div>
+      </form>
+      
+      </div>
+   
+
+<br>
+<% if(val!=null) {%>
+  <h4 style="text-align: center;">Search "<%= val %>"</h4>
+  <% } %>
+<br>
+    <% job.forEach((job) => { %>
+      <section class="job-list id=jobs">
+          <div class="job-card">
+        <div class="row">
+          <div class="col-md-9">
+            <div class="row">
+              <h3 style="padding-left: 8px;"><%= job.divisi%></h3>
             </div>
-            <div class="btn-container">
-                <span>Find Jobs</span>
+            <div class="row">
+              <div class="d-flex flex-row bd-highlight mb-3">
+                <div class="p-2 bd-highlight">
+                  <div class="d-flex flex-row bd-highlight mb-3">
+                    <div class="p-2 bd-highlight"><span class="material-icons">person</span></div>
+                    <div class="p-2 bd-highlight"><%= job.name_com %></div>
+                  </div>
+                </div>
+                <div class="p-2 bd-highlight">
+                  <div class="d-flex flex-row bd-highlight mb-3">
+                    <div class="p-2 bd-highlight"><span class="material-icons">pin_drop</span></div>
+                    <div class="p-2 bd-highlight"><%= job.city%></div>
+                  </div>
+                </div>
+              </div>
+              
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="p-2 bd-highlight">posted at <%= job.date %></div>
+                </div>
+               
+              </div>
+          </div>
+          
+          <div class="align-items-center align-content-center col-md-3 border-left">
+        <div class="d-flex flex-row mt-4">
+            <div class="p-1 bd-highlight">
+                <button class="btn btn-info" type="button" data-toggle="collapse" data-target="#<%= job.name_com%><%= job.dates%><%= job.divisi%><%= job.salary%>" aria-expanded="false" aria-controls="collapseExample">More</button>
+            </div>
+            <div class="p-1 bd-highlight">
+                <a href="/jobvacancy/apply/<%= job._id %>" class="btn btn-info" type="button" data-toggle="tooltip">Apply</a>
             </div>
         </div>
-    </div>
-    <div class="job-container">
-        <h3>Showing All Jobs</h3>
-
+</div>
+        </div>
+        <div id="<%= job.name_com%><%= job.dates%><%= job.divisi%><%= job.salary%>" class="collapse p-5">
+        <div>
+          <h4>Job Information</h4>
+        <div class="row border-top">
+          <div class="col">
+            <div class="row">
+              <div class="col-md-4">
+                <div class="d-flex flex-row bd-highlight mb-3">
+                  <div class="p-2 bd-highlight"><span class="material-icons" style="color: rgb(76, 190, 145) ;">done</span></div>
+                  <div class="p-2 bd-highlight"><h4>Age</h4>
+                      <div class="p-2 bd-highlight"><%= job.min_umur%>-<%= job.max_umur%></div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="d-flex flex-row bd-highlight mb-3">
+                  <div class="p-2 bd-highlight"><span class="material-icons" style="color: rgb(76, 190, 145) ;">done</span></div>
+                  <div class="p-2 bd-highlight"><h4>Education Level</h4>
+                      <div class="p-2 bd-highlight"><%= job.last_edu%></div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="d-flex flex-row bd-highlight mb-3">
+                  <div class="p-2 bd-highlight"><span class="material-icons" style="color: rgb(76, 190, 145) ;">done</span></div>
+                  <div class="p-2 bd-highlight"><h4>Experience</h4>
+                      <div class="p-2 bd-highlight"><%= job.pengalaman_text%></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-4">
+                <div class="d-flex flex-row bd-highlight mb-3">
+                  <div class="p-2 bd-highlight"><span class="material-icons" style="color: rgb(76, 190, 145) ;">done</span></div>
+                  <div class="p-2 bd-highlight"><h4>Salary</h4>
+                      <div class="p-2 bd-highlight">IDR <%= job.salary%> </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="d-flex flex-row bd-highlight mb-3">
+                  <div class="p-2 bd-highlight"><span class="material-icons" style="color: rgb(76, 190, 145) ;">done</span></div>
+                  <div class="p-2 bd-highlight"><h4>Location</h4>
+                      <div class="p-2 bd-highlight"><%= job.location%></div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="d-flex flex-row bd-highlight mb-3">
+                  <div class="p-2 bd-highlight"><span class="material-icons" style="color: rgb(76, 190, 145) ;">done</span></div>
+                  <div class="p-2 bd-highlight"><h4>City</h4>
+                      <div class="p-2 bd-highlight"><%= job.city %></div>
+                  </div>
+                </div>
+              </div>
+  
+          </div>
+          
+          </div>
+          
+        </div>
+        <h4 style="padding-top: 3%;">Jobs Description</h4>
+        <div class="row border-Top">
+          <div>
+            <div class="d-flex flex-column bd-highlight mb-3">
+              <div class="p-2 bd-highlight">Kriteria</div>
+              <div class="p-2 bd-highlight"><%= job.kriteria%></div>
+            </div>
+          </div>
+          <div>
+            <div class="d-flex flex-column bd-highlight mb-3">
+              <div class="p-2 bd-highlight">Job Desk</div>
+              <div class="p-2 bd-highlight"><%= job.fasilitas%></div>
+            </div>
+        </div>
+       
+        </div>            
+        </div>
+        </div>
+        </div>
+      </section>
+        <% }) %>
         
-                <section class="job-list id=jobs">
-                    <div class="job-card">
-                        <div class="job-name">
-                          <div class="p-1 bd-highlight">
-                            <div class="job-detail">
-                                <h2>PT.pungut</h2>
-                                <p>Writer ,Administrator, Office Boy</p>
-                            </div>
-                            <div class="row" style="text-align: center; margin-left: 350px;">
-                              <div class="col">
-                                  <div class="d-flex flex-column bd-highlight mb-3">
-                                      <div class="p-2 bd-highlight">Gaji 5.500.000</div>
-                                    </div>
-                              </div>
-                              <div class="col">
-                                  <div class="d-flex flex-column bd-highlight mb-3">
-                                      <div class="p-2 bd-highlight">Lokasi : Jakarta
-                                      </div>
-                                    </div>
-                              </div>
-                              <div class="col">
-                                  <div class="d-flex flex-column bd-highlight mb-3">
-                                      <div class="p-2 bd-highlight">Min pendidikan Sma</div>
-                                    </div>
-                              </div>
-                              <div class="col">
-                                  <div class="d-flex flex-column bd-highlight mb-3">
-                                      <div class="p-2 bd-highlight">usia 20-30</div>
-                                    </div>
-                              </div>
-                          </div>
-                            
-                            <div class="container">
-                              
-                            <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#demo">Detail</button>
+        
+        <!-- <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#demo">Detail</button> -->
                              
-                            <div id="demo" class="collapse">
-                                <div class="container-fluid p-4">
-                                    <div class="container bg-light boxtext ">
-                                        <div class="row" style="padding-left: 0%">
-                                          <div class="col-md-4">
-                                            <a class="navbar-brand" href="/"><img src="BrandActivationStaff.png" width="175px" alt=""></a>
-                                            <h5>Brand Activation Staff</h5>
-                                            <p>PT.Mandiri Jaya</p>
-                                            <p>Jakarta Barat</p>
-                                        </div>   
-                                            </div>
-                                            </div>
-                                            <div class="row py-5 ">
-                                                <div class="col-md-12 col-sm-12">
-                                                    <h5 class="text-left">Deskripsi Pekerjaan</h5>
-                                                    <br>
-                                                    <div class="row" style="padding-left: 0%;">
-                                                        <div class="col-md-12">
-                                                            <h6>Deskripsi Pekerjaan</h6>
-                                                            <li>Bertanggung jawab atas persiapan & pelaksanaan pemotretan & acara</li>
-                                                            <li>Mengedit Video</li>
-                                                            <li>Membantu dalam menyusun konsep & penganggaran untuk acara</li>
-                                                        </div>
-                                                        </div>
-                                                        <br>
-                                                        <div class="row" style="padding-left: 0%;">
-                                                        <div class="col-md-12 col-sm-12">
-                                                            <h6>Kualifikasi</h6>
-                                                            <li>Pria & Wanita.</li>
-                                                            <li>Berusia minimal 17 - 50 tahun.</li>
-                                                            <li>Jujur, Ramah & Mampu berkomunikasi dengan baik</li>
-                                                            <li> Berpenampilan rapih & bersih</li>
-                                                        </div>
-                                                        </div>
-                                                        <br>
-                                                        <div class="row" style="padding-left: 0%;">
-                                                          <div class="col-md-12 col-sm-12">
-                                                              <h5 class="text-left">Informasi Tambahan</h5>
-                                                              </div>
-                                                              </div>
-                                                              </div>
-                                                              <div class="row" style="padding-left: 1%;">
-                                                                <div class="col-md-5">
-                                                                  <h5>Tingkat Pekerjaan</h5>
-                                                                  <li>Pegawai</li>
-                                                              </div>
-                                                              <div class="col-md-5 col-sm-6">
-                                                                  <h5>Kualifikasi</h5>
-                                                                  <li>Sarjana(S1)</li>
-                                                              </div>
-                                                              <div class="col-md-5 col-sm-6">
-                                                                  <h5>Jenis Pekerjaan</h5>
-                                                                  <li>Penuh Waktu</li>
-                                                              </div>
-                                                              <div class="col-md-5 col-sm-6">
-                                                                <h5>Spesialisasi Pekerjaan</h5>
-                                                                <li>Penjualan / Pemasaran, Pemasaran/Pengembangan Bisnis</li>
-                                                            </div>
-                                                                 
-                                                              </div>
-                                        </div>
-                                       
-                                 
-                                  <div class="row py-10 ">
-                                    <div class="col-md-6 col-sm-6">
-                                        <br>
-                                        <br>
-                                        <br>
-                                        <div class="row" style="margin-left: 100px  ;  ">
-                                            
-                                          
-                                              <h3 class="card-title"><a href="paymenthotel.html" class="btn btn-primary">apply now</a></h3>
-                                            </div>
-                                          </div>
-                                           
-                                      
-                                   
-                            
-                            </div>
-                          </div>
-                                    </div>
-                            </div>
-                          </div>
-                            </div> 
-                        </div>
-                        </div>
-                    
-                        
-                </section>
-
-
-
-
-
-
-        </div>
-        
-    
-        
+      
+         
 </body>
 </html>
