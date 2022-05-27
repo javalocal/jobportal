@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Faq-Javaloca</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          rel="stylesheet">
+          <link rel="stylesheet" href="tamplate_1.css">
+          <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          rel="stylesheet">
+          <style>
+            .warna{
+              color: black;
+            }
+          </style>
+</head>
+<body>
+    <header>
+       <div class="container-fluid p-0">
+        <%- include('../layouts/navbar.ejs'); %>
+       </div>  
+    </header>
+    <h2 class="text-center">Faq</h2>
+   <br>
+     <div class="accordion" id="accordionExample">
+
+       <div class="card">
+         <div class="card-header" id="headingOne">
+           <h2 class="mb-0">
+             <button class="btn btn-link btn-block text-left collapsed textfaq warna" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+               Apa itu PUNGUT?
+             </button>
+           </h2>
+         </div>
+     
+         <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+           <div class="card-body">
+             <p> PUNGUT adalah platform Periklanan Pekerjaan Terprogram canggih, membantu pemberi kerja menemukan kandidat ideal dan pencari kerja peluang kerja yang sesuai yang mereka cari.</p>
+           </div>
+         </div>
+       </div>
+
+
+
+
+
+
+       <div class="card">
+         <div class="card-header" id="headingTwo">
+           <h2 class="mb-0">
+             <button class="btn btn-link btn-block text-left collapsed textfaq warna" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+               Mengapa kita harus menggunakan PUNGUT ?
+             </button>
+           </h2>
+         </div>
+         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+           <div class="card-body">
+               <p>PUNGUT membantu perekrut menemukan talenta terbaik di industri ini dan membantu kandidat menemukan pekerjaan impian mereka. Dengan ratusan lowongan pekerjaan di database dari seluruh Indonesia, PUNGUT membantu kandidat menemukan pekerjaan yang mereka inginkan.</p>
+           </div>
+         </div>
+       </div>
+
+
+
+
+
+
+       <div class="card">
+         <div class="card-header" id="headingThree">
+           <h2 class="mb-0">
+             <button class="btn btn-link btn-block text-left collapsed textfaq warna" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                Apa manfaat menggunakan PUNGUT ?
+             </button>
+           </h2>
+         </div>
+         <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+           <div class="card-body">
+             <p>Dengan jutaan lowongan pekerjaan di databasenya, PUNGUT membantu Anda menemukan pekerjaan impian Anda</p>
+           </div>
+         </div>
+       </div>
+          
+
+
+
+       <div class="card">
+         <div class="card-header" id="headingThree">
+           <h2 class="mb-0">
+             <button class="btn btn-link btn-block text-left collapsed textfaq warna" type="button" data-toggle="collapse" data-target="#collapse4" aria-expanded="false" aria-controls="collapse4">
+                Apakah kita harus membayar untuk mencari dan melamar pekerjaan di PUNGUT?
+             </button>
+           </h2>
+         </div>
+         <div id="collapse4" class="collapse" aria-labelledby="heading4" data-parent="#accordionExample">
+           <div class="card-body">
+            <p>Tidak, Anda tidak perlu membayar apa pun untuk mencari dan melamar pekerjaan di PUNGUT.</p>
+      
+             </div>
+           </div>
+         </div>
+
+
+               <div class="card">
+                 <div class="card-header" id="headingThree">
+                   <h2 class="mb-0">
+                     <button class="btn btn-link btn-block text-left collapsed textfaq warna" type="button" data-toggle="collapse" data-target="#collapse5" aria-expanded="false" aria-controls="collapse5">
+                        Bagaimana cara mencari lowongan pekerjaan di PUNGUT?
+                     </button>
+                   </h2>
+                 </div>
+                 <div id="collapse5" class="collapse" aria-labelledby="heading5" data-parent="#accordionExample">
+                   <div class="card-body">
+                     <h6>Untuk mencari lowongan pekerjaan di PUNGUT, lakukan hal berikut:</h6>
+                     <ul>
+                         <li> Di bilah pencarian - ketikkan judul pekerjaan atau nama perusahaan tempat Anda ingin bekerja. </li>
+                         <li> Di bidang lokasi - ketik lokasi Anda ingin mendapatkan pekerjaan. </li>
+                         <li> Klik tombol pencarian untuk mengakses hasil pencarian. </li> 
+                    </ul>
+                     <br>
+                     <br>
+                    
+                      
+             
+           </div>
+         </div>
+              </div>       <br><br>
+           
+               
+                     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</body>
+</html>
