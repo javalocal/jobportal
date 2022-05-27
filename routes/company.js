@@ -111,10 +111,10 @@ await job.save((err, res) => {
     if (err) console.error(err);
         else {
             console.log('add job ok');
+            res.redirect('/company/home')
           
         }
 })
-res.redirect('/company/home')
 
 })
 

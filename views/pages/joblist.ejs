@@ -75,7 +75,7 @@
           <div class="align-items-center align-content-center col-md-3 border-left">
         <div class="d-flex flex-row mt-4">
             <div class="p-1 bd-highlight">
-                <button class="btn btn-info" type="button" data-toggle="collapse" data-target="#<%= job.name_com%><%= job.dates%><%= job.divisi%><%= job.salary%>" aria-expanded="false" aria-controls="collapseExample">More</button>
+                <button class="btn btn-info" type="button" data-toggle="collapse" data-target="#a<%= job._id%>" aria-expanded="false" aria-controls="collapseExample">More</button>
             </div>
             <div class="p-1 bd-highlight">
                 <a href="/jobvacancy/apply/<%=job._id%>" class="btn btn-info" type="button" data-toggle="tooltip">Apply</a>
@@ -83,7 +83,7 @@
         </div>
 </div>
         </div>
-        <div id="<%= job.name_com%><%= job.dates%><%= job.divisi%><%= job.salary%>" class="collapse p-5">
+        <div id="a<%= job._id%>" class="collapse p-5">
         <div>
           <h4>Job Information</h4>
         <div class="row border-top">

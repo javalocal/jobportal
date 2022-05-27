@@ -53,12 +53,8 @@ router.post('/login', async (req,res) => {
                 res.redirect('/company/home')
             console.log(addid.id);
             }else{
-                await data.forEach((account)=>{
-                 edu=account.pengalaman;
-                 peng=account.pengalaman;   
-                });
-                addid.datauser=func.inputuser(edu,peng)
                 res.redirect('/jobvacancy') 
+                console.log(addid.id);
             }
             
         }else{
