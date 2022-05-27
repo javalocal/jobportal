@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Page</title>
+
+
+    <link rel="stylesheet" href="/css/pro.css">
+    <link rel="stylesheet" href="/css/tamplate_1.css">
+    <link rel="stylesheet" href="/css/cv.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+</head>
+<body>
+<header>
+    <div class="container-fluid p-0">
+        <%- include('../layouts/navbarjob.ejs'); %>
+        </div>
+</header>
+    <br>
+
+    <div class="card p-5">
+        <% data.forEach((data) => { %>
+        <div class="sidenav">
+            <div class="profile">
+                <div class="name">
+                    <%= data.first_name%> <%= data.last_name%>
+                </div>
+                <div class="job">
+                    <%= data.pendidikan_text%> <%= data.pendidikan%>
+                </div>
+            </div>
+    
+            <div class="sidenav-url">
+                <% if(type=="profile") {%>
+                    <div class="url">
+                        <a href="/account/profile" class="active">Profile</a>
+                        <hr align="center">
+                    </div>
+                    <div class="url">
+                        <a href="/account/cv">My CV</a>
+                        <hr align="center">
+                    </div>
+                    <div class="url">
+                        <a href="/account/upass">Update password</a>
+                        <hr align="center">
+                    </div>
+                    <div class="url">
+                        <a href="/account/email" class="active">Update email</a>
+                        <hr align="center">
+                    </div>
+        <% }else if (type=="cv") {%>
+            <div class="url">
+                <a href="/account/profile" >Profile</a>
+                <hr align="center">
+            </div>
+            <div class="url">
+                <a href="/account/cv" class="active">My CV</a>
+                <hr align="center">
+            </div>
+            <div class="url">
+                <a href="/account/upass">Update password</a>
+                <hr align="center">
+            </div>
+            <div class="url">
+                <a href="/account/email" class="active">Update email</a>
+                <hr align="center">
+            </div>
+        <% } else if (type == "pass") {%>
+            <div class="url">
+                <a href="/account/profile" >Profile</a>
+                <hr align="center">
+            </div>
+            <div class="url">
+                <a href="/account/cv">My CV</a>
+                <hr align="center">
+            </div>
+            <div class="url">
+                <a href="/account/upass" class="active">Update password</a>
+                <hr align="center">
+            </div>
+            <div class="url">
+                <a href="/account/email" class="active">Update email</a>
+                <hr align="center">
+            </div>
+            <% } else if (type == "email") {%>
+                <div class="url">
+                    <a href="/account/profile" >Profile</a>
+                    <hr align="center">
+                </div>
+                <div class="url">
+                    <a href="/account/cv">My CV</a>
+                    <hr align="center">
+                </div>
+                <div class="url">
+                    <a href="/account/upass">Update password</a>
+                    <hr align="center">
+                </div>
+                <div class="url">
+                    <a href="/account/email" class="active">Update email</a>
+                    <hr align="center">
+                </div>
+                <% } %>
+                
+            </div>
+        </div>
+     
+    
+        <div class="main">
+            <h2>Personal Information</h2>
+           
+                    <% if(type=="profile") {%>
+                        <div class="card">
+                            <div class="card-body">
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>:</td>
+                                    <td><%= data.first_name%> <%= data.last_name%></td>
+                                </tr>
+                                <tr>
+                                    <td>Gender</td>
+                                    <td>:</td>
+                                    <td><%= data.gender%></td>
+                                </tr>
+                                <tr>
+                                    <td>Address</td>
+                                    <td>:</td>
+                                    <td><%= data.provinsi%>, <%= data.address%></td>
+                                </tr>
+                                <tr>
+                                    <td>Phone</td>
+                                    <td>:</td>
+                                    <td><%= data.nomor%></td>
+                                </tr>
+                                <tr>
+                                    <td>Umur</td>
+                                    <td>:</td>
+                                    <td><%= data.umur%></td>
+                                </tr>
+                                <tr>
+                                    <td>Email</td>
+                                    <td>:</td>
+                                    <td><%= data.email%></td>
+                                </tr>
+                                <tr>
+                                    <td>Experience</td>
+                                    <td>:</td>
+                                    <td><%= data.pengalaman_text%></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    
+                    <i class="fa fa-pen fa-xs edit"></i>
+                </div>
+            </div>
+            <% }else if (type=="cv") {%>
+                <div class="row">
+                    <div class="col-md-12 p-4">
+                        <div class="resume">
+                            <div class="resume_left">
+                              <div class="resume_content">
+                                <div class="resume_item resume_info">
+                                  <div class="title">
+                                    <p class="bold"><%= data.first_name%> <%= data.last_name%></p>
+                                    <p><%= data.gender%></p>
+                                  </div>
+                                  <ul>
+                                    <li>
+                                      <div class="icon">
+                                        <i class="fas fa-mobile-alt"></i>
+                                      </div>
+                                      <div class="data">
+                                        <%= data.nomor%>
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <div class="icon">
+                                        <i class="fas fa-envelope"></i>
+                                      </div>
+                                      <div class="data">
+                                        <%= data.email%>
+                                      </div>
+                                    </li>
+                    
+                                  </ul>
+                                </div>
+                                <div class="resume_item resume_skills">
+                                 <div class="title">
+                                   <p class="bold">Alamat</p>
+                                 </div>
+                                 <ul>
+                                   <li>
+            
+                                      <%= data.address%> <%= data.provinsi%>
+                                    
+                                   </li>
+                                   
+                                 </ul>
+                               </div>
+                                <div class="resume_item resume_social">
+                                  <div class="title">
+                                    <p class="bold">Graduation</p>
+                                  </div>
+                                  <ul>
+                                    <li>
+                                      <div class="data">
+                                        <p class="semi-bold"><%= data.pendidikan%></p>
+                                        <p><%= data.pendidikan_text%> <%= data.jurusan%></p>
+                                      </div>
+                                    </li>
+                                  </ul>
+                                </div>
+                              </div>
+                           </div>
+                           <div class="resume_right">
+                             <div class="resume_item resume_about">
+                                 <div class="title">
+                                   <p class="bold">About me</p>
+                                 </div>
+                                <p><%= data.ket%></p>
+                            </div>
+                            <div class="resume_item resume_work">
+                                <div class="title">
+                                   <p class="bold">Work Experience</p>
+                                 </div>
+                                <ul>
+                                     <li>
+                                         <div class="info">
+                                           <p><%= data.skill%></p>
+                                         </div>
+                                     </li>
+                                </ul>
+                            </div>
+                           </div>
+                        </div>
+                    </div>
+                </div>
+            <% } else if (type == "pass") {%>
+                <div class="card">
+                    <div class="card-body">
+                        <h1>Update password</h1>
+                         
+                            <form method="post" action="/account/upasss">
+                      
+                              <div class="form-group">
+                                <label for="inputEmail">New password</label>
+                                <input type="password" class="form-control" name="npass" id="inputEmail" placeholder="password">
+                              </div>
+                            <div class="form-group">
+                              <label for="inputPassword">Write again new Password</label>
+                              <input type="password" class="form-control" name="npass_" id="inputPassword" placeholder="password">
+                            </div> 
+                            <div class="form-group">
+                                <label for="inputPassword">Old password</label>
+                                <input type="password" class="form-control" name="pass" id="inputPassword" placeholder="password">
+                              </div>  
+                            <button type="submit" class="btn btn-info">Update</button>
+                            <% if(locals.error) { %>
+                              <span class="text-danger pl-2" style="font-size: 2.2vh"><%= error %></span>
+                              <% } %>
+                          </form>
+                    </div>
+                </div>
+                <% } else if (type == "email") {%>
+                    <div class="card">
+                        <div class="card-body">
+                            <h1>Update password</h1>
+                             
+                                <form method="post" action="/account/uemail">
+                          
+                                  <div class="form-group">
+                                    <label for="inputEmail">New email</label>
+                                    <input type="email" class="form-control" name="email" id="inputEmail" placeholder="contoh@email.com">
+                                  </div>
+                                  <label for="inputEmail">Input password</label>
+                                    <input type="password" class="form-control" name="pass" id="inputEmail" placeholder="password">
+                                  </div>  
+                                <button type="submit" class="btn btn-info">Update</button>
+                                <% if(locals.error) { %>
+                                  <span class="text-danger pl-2" style="font-size: 2.2vh"><%= error %></span>
+                                  <% } %>
+                              </form>
+                        </div>
+                    </div>
+                    <% } %>
+        </div>
+        <% }) %>
+    </div>
+
+   
+    
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+      
+        
+              <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</html>

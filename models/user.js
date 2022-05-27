@@ -50,7 +50,19 @@ const userSchema = mongoose.Schema({
         type: Number,
         required: false
     },
+    nomor: {
+        type: String,
+        required: false
+    },
+    ket: {
+        type: String,
+        required: false
+    },
     pengalaman_text: {
+        type: String,
+        required: false
+    },
+    gender: {
         type: String,
         required: false
     },

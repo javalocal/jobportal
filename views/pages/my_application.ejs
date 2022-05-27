@@ -31,34 +31,22 @@
               <th data-sortable="true">Company</th>
               <th data-sortable="true">Division</th>
               <th scope="col">Status</th>
-              <th scope="col">More</th>
+              <th scope="col">Description</th>
             </tr>
           </thead>
           <tbody>
+            <% data.forEach((data) => { %>
             <tr>
-              <th scope="row">1</th>
-              <td>23 Maret 2022</td>
-              <td>PT. Seibu Kita Bersama</td>
-              <td>Marketing</td>
-              <td>Process</td>
-              <td><a href="">link</a></td>
+              <th scope="row"><%= number %></th>
+              <td><%= data.date %></td>
+              <td><%= data.company %></td>
+              <td><%= data.divisi %></td>
+              <td><%= data.status %></td>
+              <td><%= data.deskripsi %></td>
             </tr>
-            <tr>
-                <th scope="row">2</th>
-                <td>23 April 2022</td>
-                <td>PT. Seibu Kita Bersama</td>
-                <td>Marketing</td>
-                <td>Process</td>
-                <td><a href="">link</a></td>
-            </tr>
-            <tr>
-                <th scope="row">3</th>
-                <td>20 April 2022</td>
-                <td>PT. Sosro Suroyo</td>
-                <td>Marketing</td>
-                <td>Rejected</td>
-                <td><a href="">link</a></td>
-            </tr>
+            <% number++ %>
+            <% }) %>
+           
           </tbody>
       </table>
     </div>

@@ -2,31 +2,32 @@ const { flatten } = require('express/lib/utils')
 const mongoose = require('mongoose')
 
 const userSchema = mongoose.Schema({
+    
+    date: {
+        type: String,
+        required: true
+    },
+    idjob: {
+        type: String,
+        required: true
+    },
+    company: {
+        type: String,
+        required: true
+    },
     divisi: {
         type: String,
         required: true
     },
-   id_com: {
+    iduser: {
         type: String,
-        required: true
+        required: true,
     },
-    name_com: {
+    gender: {
         type: String,
-        required: true
+        required: true,
     },
-    salary: {
-        type: String,
-        required: true
-    },
-    location: {
-        type: String,
-        required: true
-    },
-    city: {
-        type: String,
-        required: true
-    },
-    date: {
+    name: {
         type: String,
         required: true
     },
@@ -34,36 +35,19 @@ const userSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    edu: {
-        type: Number,
-        required: true
-    },
     pengalaman: {
-        type: Number,
-        required: false
-    },
-    pengalaman_text: {
-        type: String,
-        required: false
-    },
-    kriteria: {
         type: String,
         required: true
     },
-    fasilitas: {
+    status: {
         type: String,
         required: true
     },
-    min_umur: {
-        type: Number,
+    deskripsi: {
+        type: String,
         required: true
-    },
-    max_umur: {
-        type: Number,
-        required: true
-    },
-    
+    }
     
 })
 
-module.exports = mongoose.model('Jobs', userSchema, 'jobs')
+module.exports = mongoose.model('Apply', userSchema, 'apply')

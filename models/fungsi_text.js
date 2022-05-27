@@ -2,6 +2,11 @@
     module.exports = function conf() {
         this.pend_text;
         this.peng_text;
+
+        this.inputuser= function(edu,expe){
+         var datajob = {edu:edu, pengalaman:expe}
+         return datajob;   
+        }
             this.endu=function(pndk_terakhir) {
                 if(pndk_terakhir==1){
                     this.pend_text ="SMA/Sederajat";

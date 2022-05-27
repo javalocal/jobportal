@@ -31,8 +31,16 @@
                             <div class="accordion" id="accordionExample">
                             <p style="text-align:center">
                               <h1>Register</h1>
-                              <button class="btn btn-light" type="button" data-toggle="collapse" data-target="#company" aria-expanded="false" aria-controls="company">Company</button>
-                              <button class="btn btn-light" type="button" data-toggle="collapse" data-target="#jobsAp" aria-expanded="false" aria-controls="jobsAp">Job Applicant</button>
+                         
+                                  <button class="btn btn-light" type="button" data-toggle="collapse"  data-target="#company"aria-expanded="true">Company</button>
+                            
+                              <button class="btn btn-light" type="button" data-toggle="collapse" data-target="#jobsAp" aria-expanded="true" >Job Applicant</button>
+                              <% if(locals.error) { %>
+                                <div>
+                                  <span class="text-danger pl-2" style="font-size: 2.2vh"><%= error %></span>
+                                </div>
+                                
+                                <% } %>
                             </p>
                             <div class="collapse" id="company" data-parent="#accordionExample">
                               <br>
@@ -52,70 +60,7 @@
                                   <div class="form-row">
                                     <div class="form-group col-md-12">
                                       <label for="inputCity">Provinsi</label>
-                                      <input type="text" name="prov_" class="form-control" placeholder="jakarta" id="provinsi">
-                                    </div>
-                                  </div>
-                                  <div class="form-row">
-                                    <div class="form-group col-md-12">
-                                      <label for="inputCity">Email</label>
-                                      <input type="email" name="email_" placeholder="pungut@exampale.com" class="form-control" id="alamat">
-                                    </div>
-                                  </div>
-                                  <div class="form-row">
-                                      <div class="form-group col-md-6">
-                                        <label for="inputEmail4">Password</label>
-                                        <input type="password" name="password_" class="form-control" id="password">
-                                      </div>
-                                      <div class="form-group col-md-6">
-                                        <label for="inputPassword4">Confrim Password</label>
-                                        <input type="password" name="passwordcon_" class="form-control" id="passwordcon">
-                                      </div>
-                                  </div>
-                                  <button type="submit" class="btn btn-primary">Sign in</button>
-                                  <% if(locals.error) { %>
-                                    <span class="text-danger pl-2" style="font-size: 2.2vh"><%= error %></span>
-                                    <% } %>
-                                </form>
-                            
-                          </div>
-                            <div class="collapse" id="jobsAp" data-parent="#accordionExample">
-                              <br>
-                              <form method="post" action="/account/regisjob">
-                                  <div class="form-row">
-                                      <div class="form-group col-md-6">
-                                        <label for="fname">Nama Depan</label>
-                                        <input type="text" name="fname" class="form-control" placeholder="Pungut" id="fname_">
-                                      </div>
-                                      <div class="form-group col-md-6">
-                                          <label for="lname">Nama Belakang</label>
-                                          <input type="text" name="lname" class="form-control" placeholder="udin" id="lname_">
-                                        </div>
-                                    </div>
-                                    <div class="form-row">
-                                      <div class="form-group col-md-6">
-                                        <label for="tanggall">Tempat Lahir</label>
-                                        <input type="text" name="tlahir" placeholder="Jakarta" class="form-control" id="tanggall">
-                                      </div>
-                                      <div class="form-group col-md-6">
-                                        <label for="tanggall">Tanggal Lahir</label>
-                                        <input type="date" name="tgllahir" class="form-control" id="tanggall">
-                                      </div>
-                                    </div>
-                               
-                                  <!-- <div class="form-group">
-                                    <label for="inputAddress">Address</label>
-                                    <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
-                                  </div> -->
-                                  <div class="form-row">
-                                    <div class="form-group col-md-12">
-                                      <label for="inputCity">Alamat</label>
-                                      <input type="text" name="alamat" class="form-control" placeholder="Jl Grogol utara no.5" id="alamat">
-                                    </div>
-                                  </div>
-                                  <div class="form-row">
-                                    <div class="form-group col-md-12">
-                                      <label for="inputCity">Provinsi</label>
-                                      <select id="inputState" name="Provinsi" class="form-control">
+                                      <select id="inputState" name="prov_" class="form-control">
                                         <option value="Aceh">Aceh</option>
                                         <option value="Bali">Bali</option>
                                         <option value="Banten">Banten</option>
@@ -142,7 +87,7 @@
                                         <option value="Papua Barat ">Papua Barat </option>
                                         <option value="Provinsi Kalimantan Selatan">Provinsi Kalimantan Selatan</option>
                                         <option value="Provinsi Sulawesi Selatan">Provinsi Sulawesi Selatan</option>
-                                        <option value="Riau ">Riau </option>
+                                        <option value="Riau">Riau </option>
                                         <option value="Sulawesi Barat ">Sulawesi Barat </option>
                                         <option value="Sulawesi Tengah ">Sulawesi Tengah </option>
                                         <option value="Sulawesi Tenggara ">Sulawesi Tenggara </option>
@@ -154,15 +99,115 @@
                                     </div>
                                   </div>
                                   <div class="form-row">
-                                        <div class="form-group col-md-12">
+                                    <div class="form-group col-md-12">
+                                      <label for="inputCity">Email</label>
+                                      <input type="email" name="email_" placeholder="pungut@exampale.com" class="form-control" id="alamat">
+                                    </div>
+                                  </div>
+                                  <div class="form-row">
+                                      <div class="form-group col-md-6">
+                                        <label for="inputEmail4">Password</label>
+                                        <input type="password" name="password_" class="form-control" id="password">
+                                      </div>
+                                      <div class="form-group col-md-6">
+                                        <label for="inputPassword4">Confrim Password</label>
+                                        <input type="password" name="passwordcon_" class="form-control" id="passwordcon">
+                                      </div>
+                                  </div>
+                                  <button type="submit" class="btn btn-primary">Register</button>
+                                </form>
+                            
+                          </div>
+                            <div class="collapse" id="jobsAp" data-parent="#accordionExample">
+                              <br>
+                              <form method="post" action="/account/regisjob">
+                                  <div class="form-row">
+                                      <div class="form-group col-md-6">
+                                        <label for="fname">Nama Depan</label>
+                                        <input type="text" name="fname" class="form-control" placeholder="Pungut" id="fname_">
+                                      </div>
+                                      <div class="form-group col-md-6">
+                                          <label for="lname">Nama Belakang</label>
+                                          <input type="text" name="lname" class="form-control" placeholder="udin" id="lname_">
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                      <label for="inputState">Gender</label>
+                                      <select id="inputState" name="gender" class="form-control">
+                                        <option value="Male">Male</option>
+                                        <option value="Female">Female</option>
+                                      </select>
+                                      <div class="form-group col-md-6">
+                                        <label for="tanggall">Tanggal Lahir</label>
+                                        <input type="date" name="tgllahir" class="form-control" id="tanggall">
+                                      </div>
+                                    </div>
+                               
+                                  <!-- <div class="form-group">
+                                    <label for="inputAddress">Address</label>
+                                    <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+                                  </div> -->
+                                  <div class="form-row">
+                                    <div class="form-group col-md-12">
+                                      <label for="inputCity">Alamat</label>
+                                      <input type="text" name="alamat" class="form-control" placeholder="Jl Grogol utara no.5" id="alamat">
+                                    </div>
+                                  </div>
+                                  <div class="form-row">
+                                    <div class="form-group col-md-12">
+                                      <label for="inputCity">Provinsi</label>
+                                      <select id="inputState" name="provinsi" class="form-control">
+                                        <option value="Aceh">Aceh</option>
+                                        <option value="Bali">Bali</option>
+                                        <option value="Banten">Banten</option>
+                                        <option value="Bengkulu">Bengkulu</option>
+                                        <option value="DI Yogyakarta ">DI Yogyakarta </option>
+                                        <option value="DKI Jakarta ">DKI Jakarta </option>
+                                        <option value="Gorontalo">Gorontalo</option>
+                                        <option value="Jambi">Jambi</option>
+                                        <option value="Jawa Barat ">Jawa Barat </option>
+                                        <option value="Jawa Tengah">Jawa Tengah</option>
+                                        <option value="Jawa Timur ">Jawa Timur </option>
+                                        <option value="Kalimantan Barat ">Kalimantan Barat </option>
+                                        <option value="Kalimantan Tengah ">Kalimantan Tengah </option>
+                                        <option value="Kalimantan Timur ">Kalimantan Timur </option>
+                                        <option value="Kalimantan Utara ">Kalimantan Utara </option>
+                                        <option value="Kepulauan Bangka ">Kepulauan Bangka Belitung</option>
+                                        <option value="Kepulauan Riau ">Kepulauan Riau </option>
+                                        <option value="Lampung ">Lampung </option>
+                                        <option value="Maluku ">Maluku</option>
+                                        <option value="Maluku Utara ">Maluku Utara</option>
+                                        <option value="Nusa Tenggara Barat ">Nusa Tenggara Barat </option>
+                                        <option value="Nusa Tenggara Timur ">Nusa Tenggara Timur </option>
+                                        <option value="Papua">Papua</option>
+                                        <option value="Papua Barat ">Papua Barat </option>
+                                        <option value="Provinsi Kalimantan Selatan">Provinsi Kalimantan Selatan</option>
+                                        <option value="Provinsi Sulawesi Selatan">Provinsi Sulawesi Selatan</option>
+                                        <option value="Riau">Riau </option>
+                                        <option value="Sulawesi Barat ">Sulawesi Barat </option>
+                                        <option value="Sulawesi Tengah ">Sulawesi Tengah </option>
+                                        <option value="Sulawesi Tenggara ">Sulawesi Tenggara </option>
+                                        <option value="Sulawesi Utara ">Sulawesi Utara </option>
+                                        <option value="Sumatera Barat ">Sumatera Barat </option>
+                                        <option value="Sumatera Selatan ">Sumatera Selatan </option>
+                                        <option value="Sumatera Utara ">Sumatera Utara </option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                  <div class="form-row">
+                                        <div class="form-group col-md-6">
                                           <label for="inputState">Pendidikan Terakhir</label>
                                           <select id="inputState" name="pendidikan_akhir" class="form-control">
                                             <option value=1>SMA/Sederajat</option>
-                                            <option value=2> D3</option>
+                                            <option value=2>D3</option>
                                             <option value=3>S1</option>
                                             <option value=4>S2</option>
                                             <option value=5>S3</option>
                                           </select>
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                          <label for="inputCity">Alamat</label>
+                                      <input type="text" name="nomor" class="form-control" placeholder="+628xxxxx" id="alamat">
                                         </div>
                                   </div>
                                   <div class="form-row">
@@ -188,6 +233,12 @@
                                     </div>
                                   </div>
                                   <div class="form-row">
+                                    <div class="form-group col-md-12">
+                                      <label for="exampleFormControlTextarea1">Deskripsi mengenai anda</label>
+                                      <textarea class="form-control" name="ket" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                    </div>
+                              </div>
+                                  <div class="form-row">
                                         <div class="form-group col-md-12">
                                           <label for="exampleFormControlTextarea1">Jelaskan Pengalaman atau skill anda</label>
                                           <textarea class="form-control" name="skill" id="exampleFormControlTextarea1" rows="3"></textarea>
@@ -209,10 +260,11 @@
                                         <input type="password" name="passwordcon" class="form-control" id="passwordcon">
                                       </div>
                                   </div>
-                                  <button type="submit" class="btn btn-primary">Sign in</button>
+                                  <button type="submit" class="btn btn-primary">Register</button>
                                 </form>
                             
                           </div>
+                          <a class="signup__link" style="color: rgb(91, 169, 143);" href="/account/login_home">I have a member</a>
                             </div>
                           </div>
                       </div>

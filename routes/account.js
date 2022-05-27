@@ -4,12 +4,19 @@ const res = require('express/lib/response');
 const User = require('../models/user');
 const router = express.Router();
 const fungsi=require('../models/fungsi_text')
-const addid=require('../models/save_id')
+const addid=require('../models/save_id');
+// const { add } = require('nodemon/lib/rules');
 // const addid=data();
 const func=new fungsi();
 
 
 
+router.get('/logout', (req, res) => {
+    req.session.isLoggedIn = false;
+    addid.id=null;
+    res.redirect('/');
+    console.log(func.name);
+})
 
 router.get('/login_home', (req, res) => {
     res.render('pages/login')
@@ -17,7 +24,7 @@ router.get('/login_home', (req, res) => {
 })
 
 router.get('/register', (req, res) => {
-    res.render('pages/register')
+    res.render('pages/register', {jenis:"ok"})
 })
 
 router.post('/login', async (req,res) => {
@@ -28,6 +35,8 @@ router.post('/login', async (req,res) => {
     var role;
     var name;
     var id;
+    var edu;
+    var peng;
     const data = await User.find({email:email_});
     await data.forEach((account)=>{
         emailok=account.email;
@@ -38,20 +47,25 @@ router.post('/login', async (req,res) => {
     });
     if(email_==emailok){
         if(password_==passwordok){
-            // req.session.isLoggedIn = true;
+            req.session.isLoggedIn = true;
             addid.id=id;
             if(role=="co"){
                 res.redirect('/company/home')
             console.log(addid.id);
             }else{
+                await data.forEach((account)=>{
+                 edu=account.pengalaman;
+                 peng=account.pengalaman;   
+                });
+                addid.datauser=func.inputuser(edu,peng)
                 res.redirect('/jobvacancy') 
             }
             
         }else{
-            res.render('pages/signin', {jenis:"login",error: 'Wrong Password'});
+            res.render('pages/login', {jenis:"login",error: 'Wrong Password'});
         }
     }else{
-        res.render('pages/signin', {jenis:"login",error: 'Wrong Password or Email'});
+        res.render('pages/login', {jenis:"login",error: 'Wrong Password or Email'});
     }
 })
 
@@ -70,11 +84,13 @@ const data = await User.find({email:email1});
 await data.forEach((account)=>{
     email2=account.email;
 })
-if(email1==email2){
-    res.render('pages/register', {jenis:"register",error: 'Email sudah terdaftar'});
+if(name== null || name=='' ||alamat=="" || alamat==null || prov =="" || prov == null){
+    res.render('pages/register', {error: 'error form ada yang kosong!'});
+}else if(email1==email2){
+    res.render('pages/register', {error: 'Email sudah terdaftar'});
 }else{
     if (password != conpassword) {
-        res.render('pages/register', {jenis:"register", error: 'Password tidak sama!'})
+        res.render('pages/register', {error: 'Password tidak sama!'})
     } else{
         const user = new User({
             role: role,
@@ -108,14 +124,93 @@ function diff_years(dt2, dt1)
    
  }
 
+
+
+router.get('/profile', async (req,res)=>{
+    const data = await User.find({_id:addid.id});
+    res.render('pages/profile', {data:data, type:"profile"})
+})
+
+router.get('/cv', async (req,res)=>{
+    const data = await User.find({_id:addid.id});
+    res.render('pages/profile', {data:data, type:"cv"})
+})
+
+router.get('/email', async (req,res)=>{
+    const data = await User.find({_id:addid.id});
+    res.render('pages/profile', {data:data, type:"email"})
+})
+
+
+router.get('/upass', async (req,res)=>{
+    const data = await User.find({_id:addid.id});
+    res.render('pages/profile', {data:data, type:"pass"})
+})
+
+router.post('/upasss', async (req,res)=>{
+    const data = await User.find({_id:addid.id});
+    var password
+    await data.forEach((account)=>{
+        password = account.password;
+    })
+    const newpass = req.body.npass;
+    const newpass_ =req.body.npass_;
+    const oldpass =req.body.pass;
+
+    if(newpass == newpass_){
+        if (oldpass == password){
+            await User.updateOne({_id:addid.id},{$set:{password:newpass}})
+            
+            
+            res.redirect('/account/profile')
+
+        }else{
+            res.render('pages/profile', {error: 'Password tidak sama!',type :"pass",  data:data})
+        }
+    }else{
+        res.render('pages/profile', {error: 'Password baru tidak sama!', type:"pass", data:data})
+    }
+
+})
+
+router.post('/uemail', async (req,res)=>{
+    const data = await User.find({_id:addid.id});
+    const email = req.body.email;
+    const oldpass =req.body.pass;
+    var password,email_;
+    await data.forEach((account)=>{
+        password = account.password;
+    })
+
+    const datacek = await User.find({email:email});
+    await datacek.forEach((account)=>{
+        email_ =account.email;
+    })
+
+    if(email != email_){
+        if (oldpass == password){
+            await User.updateOne({_id:addid.id},{$set:{email:email}});
+            
+
+            res.redirect('/account/profile')
+        }else{
+            res.render('pages/profile', {error: 'Password tidak sama!',type :"email",  data:data})
+        }
+    }else{
+        res.render('pages/profile', {error: 'email sudah terdaftar', type:"email", data:data})
+    }
+})
+
+
+
 router.post('/regisjob',async (req, res) => {
     const role = "job";
     const fname = req.body.fname;
     const lname = req.body.lname;
-    const tmp_lahir_= req.body.tlahir;
+    const gender= req.body.gender;
     const tgl_lahir_ = req.body.tgllahir;
     const alamat = req.body.alamat;
-    const prov=req.body.prov;
+    const prov=req.body.provinsi;
     const pndk_terakhir = req.body.pendidikan_akhir;
     const lmpndk = req.body.pendidikan;
     const jurusan = req.body.jurusan;
@@ -124,6 +219,8 @@ router.post('/regisjob',async (req, res) => {
     const email1 = req.body.email;
     const password = req.body.password;
     const conpassword = req.body.passwordcon;
+    const nomor = req.body.nomor;
+    const ket = req.body.ket;
     const edu_text=func.endu(pndk_terakhir);
     const peng_text = func.peng(pengalaman);
     var email2;
@@ -145,14 +242,16 @@ router.post('/regisjob',async (req, res) => {
                 role: role,
                 first_name:fname,
                 last_name:lname,
-                tmp_lahir:tmp_lahir_,
+                gander:gender,
                 tgl_lahir:tgl_lahir_,
-                pendidikan_akhir:pndk_terakhir,
+                pendidikan_terakhir:pndk_terakhir,
                 pendidikan:lmpndk,
                 jurusan:jurusan,
                 pengalaman: pengalaman,
                 skill:skill,
                 email: email1,
+                nomor: nomor,
+                ket: ket,
                 address: alamat,
                 provinsi: prov,
                 password: password,
@@ -163,7 +262,10 @@ router.post('/regisjob',async (req, res) => {
     
             })
             await user.save((err, res) => {
-                if (err) console.error(err);
+                if (err) {
+                    console.error(err)
+                    
+                }
                     else {
                         console.log('Sign up berhasil!');
                       
