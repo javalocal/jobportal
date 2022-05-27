@@ -45,7 +45,7 @@ app.use('/company', companyRouter);
 app.use('/jobvacancy', jobRouter);
 app.use('/begin', beginRouter);
 
-// const port = process.env.PORT || 3000
-app.listen('3000', ()=> {
+const port = process.env.PORT || 3000
+app.listen(port, ()=> {
     console.log('Server sudah berjalan di port 3000')
 })
