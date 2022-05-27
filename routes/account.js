@@ -238,7 +238,7 @@ router.post('/regisjob',async (req, res) => {
                 role: role,
                 first_name:fname,
                 last_name:lname,
-                gander:gender,
+                gender:gender,
                 tgl_lahir:tgl_lahir_,
                 pendidikan_terakhir:pndk_terakhir,
                 pendidikan:lmpndk,
