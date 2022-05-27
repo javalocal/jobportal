@@ -13,9 +13,8 @@ router.get('/Aboutus', (req, res) => {
     res.render('pages/Aboutus')
 })
 
-
-
-
-
+router.get('/account', (req, res) => {
+    res.render('account/profile')
+})
 
 module.exports = router;
