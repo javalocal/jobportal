@@ -62,6 +62,10 @@ const userSchema = mongoose.Schema({
         type: String,
         required: false
     },
+    gender: {
+        type: String,
+        required: false
+    },
     skill: {
         type: String,
         required: false

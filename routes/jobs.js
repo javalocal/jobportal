@@ -46,14 +46,13 @@ router.post('/search', async(req,res)=>{
 
 router.get('/apply/:id', async(req,res)=>{
     const idjob= req.params.id;
-    var edu,peng,name, idcek, divisi,company;
-    console.log(idjob)
+    var edu,peng,name, idcek, divisi,company,gender,cekid_user;
     const dataUser= await User.find({_id:addid.id});
-    console.log(dataUser)
     await dataUser.forEach((account)=>{
         peng=account.pengalaman_text;
         edu=account.pendidikan_text;
         name = account.first_name + ' ' + account.last_name;
+        gender =account.gender;
         });
     const datacompany= await Jobs.find({_id:idjob});
         await datacompany.forEach((job)=>{
@@ -61,33 +60,34 @@ router.get('/apply/:id', async(req,res)=>{
             divisi=job.divisi;
             });
         console.log(datacompany)
-        const apply = new Apply({
-            company:company,
-            divisi:divisi,
-            idjob:idjob,
-            date:datestring(new Date),
-            iduser:addid.id,
-            name: name,
-            last_edu: edu,
-            pengalaman:peng,
-            status: "Waiting List",
-            deskripsi: "A waiting confirmation by company"
-        })
-        await apply.save((err, res) => {
-            if (err) {   
-            }
-                else {
-                    console.log('ok');
-                }
-        })
         const cek= await Apply.find({idjob:idjob})
         await cek.forEach((apply)=>{
-           idcek=apply.idjob
+           cekid_user = apply.iduser
             });
-        if(idjob==idcek){
-        res.redirect('/jobvacancy/')   
+        if(addid.id==cekid_user){
+            res.redirect('/jobvacancy/')     
         }else{
-            res.redirect('/jobvacancy/Myapplication')
+            const apply = new Apply({
+                company:company,
+                divisi:divisi,
+                idjob:idjob,
+                date:datestring(new Date),
+                iduser:addid.id,
+                gender:gender,
+                name: name,
+                last_edu: edu,
+                pengalaman:peng,
+                status: "Waiting List",
+                deskripsi: "A waiting confirmation by company"
+            })
+            await apply.save((err, res) => {
+                if (err) console.log(err);
+                    else {
+                        console.log('ok');
+                    }
+            })
+    
+                res.redirect('/jobvacancy/Myapplication')
         }
         
 })

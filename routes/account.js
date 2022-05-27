@@ -124,11 +124,90 @@ function diff_years(dt2, dt1)
    
  }
 
+
+
+router.get('/profile', async (req,res)=>{
+    const data = await User.find({_id:addid.id});
+    res.render('pages/profile', {data:data, type:"profile"})
+})
+
+router.get('/cv', async (req,res)=>{
+    const data = await User.find({_id:addid.id});
+    res.render('pages/profile', {data:data, type:"cv"})
+})
+
+router.get('/email', async (req,res)=>{
+    const data = await User.find({_id:addid.id});
+    res.render('pages/profile', {data:data, type:"email"})
+})
+
+
+router.get('/upass', async (req,res)=>{
+    const data = await User.find({_id:addid.id});
+    res.render('pages/profile', {data:data, type:"pass"})
+})
+
+router.post('/upasss', async (req,res)=>{
+    const data = await User.find({_id:addid.id});
+    var password
+    await data.forEach((account)=>{
+        password = account.password;
+    })
+    const newpass = req.body.npass;
+    const newpass_ =req.body.npass_;
+    const oldpass =req.body.pass;
+
+    if(newpass == newpass_){
+        if (oldpass == password){
+            await User.updateOne({_id:addid.id},{$set:{password:newpass}})
+            
+            
+            res.redirect('/account/profile')
+
+        }else{
+            res.render('pages/profile', {error: 'Password tidak sama!',type :"pass",  data:data})
+        }
+    }else{
+        res.render('pages/profile', {error: 'Password baru tidak sama!', type:"pass", data:data})
+    }
+
+})
+
+router.post('/uemail', async (req,res)=>{
+    const data = await User.find({_id:addid.id});
+    const email = req.body.email;
+    const oldpass =req.body.pass;
+    var password,email_;
+    await data.forEach((account)=>{
+        password = account.password;
+    })
+
+    const datacek = await User.find({email:email});
+    await datacek.forEach((account)=>{
+        email_ =account.email;
+    })
+
+    if(email != email_){
+        if (oldpass == password){
+            await User.updateOne({_id:addid.id},{$set:{email:email}});
+            
+
+            res.redirect('/account/profile')
+        }else{
+            res.render('pages/profile', {error: 'Password tidak sama!',type :"email",  data:data})
+        }
+    }else{
+        res.render('pages/profile', {error: 'email sudah terdaftar', type:"email", data:data})
+    }
+})
+
+
+
 router.post('/regisjob',async (req, res) => {
     const role = "job";
     const fname = req.body.fname;
     const lname = req.body.lname;
-    const tmp_lahir_= req.body.tlahir;
+    const gender= req.body.gender;
     const tgl_lahir_ = req.body.tgllahir;
     const alamat = req.body.alamat;
     const prov=req.body.provinsi;
@@ -163,7 +242,7 @@ router.post('/regisjob',async (req, res) => {
                 role: role,
                 first_name:fname,
                 last_name:lname,
-                tmp_lahir:tmp_lahir_,
+                gander:gender,
                 tgl_lahir:tgl_lahir_,
                 pendidikan_terakhir:pndk_terakhir,
                 pendidikan:lmpndk,

@@ -6,144 +6,296 @@
     <title>Profile Page</title>
 
 
-    <link rel="stylesheet" href="/public/css/pro.css">
+    <link rel="stylesheet" href="/css/pro.css">
+    <link rel="stylesheet" href="/css/tamplate_1.css">
+    <link rel="stylesheet" href="/css/cv.css">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
 </head>
 <body>
-    <div class="navbar-top">
-        <div class="title">
-            <h1>Profile</h1>
+<header>
+    <div class="container-fluid p-0">
+        <%- include('../layouts/navbarjob.ejs'); %>
         </div>
+</header>
+    <br>
 
-       
-        <ul>
-            <li>
-                <a href="#sign-out">
-                    <i class="fa fa-sign-out-alt fa-2x"></i>
-                </a>
-            </li>
-        </ul>
- 
-    </div>
-
-    <div class="sidenav">
-        <div class="profile">
-            <img src="data:image/jpeg;base64,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" alt="" width="100" height="100">
-
-            <div class="name">
-                valen
-            </div>
-            <div class="job">
-              Penganguran
-            </div>
-        </div>
-
-        <div class="sidenav-url">
-            <div class="url">
-                <a href="#profile" class="active">Profile</a>
-                <hr align="center">
-            </div>
-            <div class="url">
-                <a href="#dashboard">Dashboard</a>
-                <hr align="center">
-            </div>
-            <div class="url">
-                <a href="#cv">My CV</a>
-                <hr align="center">
-            </div>
-            <div class="url">
-                <a href="#settings">Settings</a>
-                <hr align="center">
-            </div>
-        </div>
-    </div>
- 
-
-    <div class="main">
-        <h2>Personal Information</h2>
-        <div class="card">
-            <div class="card-body">
-                <i class="fa fa-pen fa-xs edit"></i>
-                <table>
-                    <tbody>
-                        <tr>
-                            <td>Name</td>
-                            <td>:</td>
-                            <td>Valentino</td>
-                        </tr>
-                        <tr>
-                            <td>Gender</td>
-                            <td>:</td>
-                            <td>Male</td>
-                        </tr>
-                        <tr>
-                            <td>Address</td>
-                            <td>:</td>
-                            <td>jkt, Indonesia</td>
-                        </tr>
-                        <tr>
-                            <td>Phone</td>
-                            <td>:</td>
-                            <td>00000</td>
-                        </tr>
-                        <tr>
-                            <td>Date of Birth</td>
-                            <td>:</td>
-                            <td>14 feb 2002</td>
-                        </tr>
-                        <tr>
-                            <td>Email</td>
-                            <td>:</td>
-                            <td>PAUNGUT@GMAIL.COM</td>
-                        </tr>
-                        <tr>
-                            <td>Experience</td>
-                            <td>:</td>
-                            <td>none</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
-        <h2>SOCIAL MEDIA</h2>
-        <div class="card">
-            <div class="card-body">
-                <i class="fa fa-pen fa-xs edit"></i>
-                <div class="social-media">
-                    <span class="fa-stack fa-sm">
-                        <i class="fas fa-circle fa-stack-2x"></i>
-                        <i class="fab fa-facebook fa-stack-1x fa-inverse"></i>
-                    </span>
-                    <span class="fa-stack fa-sm">
-                        <i class="fas fa-circle fa-stack-2x"></i>
-                        <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
-                    </span>
-                    <span class="fa-stack fa-sm">
-                        <i class="fas fa-circle fa-stack-2x"></i>
-                        <i class="fab fa-instagram fa-stack-1x fa-inverse"></i>
-                    </span>
-                    <span class="fa-stack fa-sm">
-                        <i class="fas fa-circle fa-stack-2x"></i>
-                        <i class="fab fa-invision fa-stack-1x fa-inverse"></i>
-                    </span>
-                    <span class="fa-stack fa-sm">
-                        <i class="fas fa-circle fa-stack-2x"></i>
-                        <i class="fab fa-github fa-stack-1x fa-inverse"></i>
-                    </span>
-                    <span class="fa-stack fa-sm">
-                        <i class="fas fa-circle fa-stack-2x"></i>
-                        <i class="fab fa-whatsapp fa-stack-1x fa-inverse"></i>
-                    </span>
-                    <span class="fa-stack fa-sm">
-                        <i class="fas fa-circle fa-stack-2x"></i>
-                        <i class="fab fa-snapchat fa-stack-1x fa-inverse"></i>
-                    </span>
+    <div class="card p-5">
+        <% data.forEach((data) => { %>
+        <div class="sidenav">
+            <div class="profile">
+                <div class="name">
+                    <%= data.first_name%> <%= data.last_name%>
+                </div>
+                <div class="job">
+                    <%= data.pendidikan_text%> <%= data.pendidikan%>
                 </div>
             </div>
+    
+            <div class="sidenav-url">
+                <% if(type=="profile") {%>
+                    <div class="url">
+                        <a href="/account/profile" class="active">Profile</a>
+                        <hr align="center">
+                    </div>
+                    <div class="url">
+                        <a href="/account/cv">My CV</a>
+                        <hr align="center">
+                    </div>
+                    <div class="url">
+                        <a href="/account/upass">Update password</a>
+                        <hr align="center">
+                    </div>
+                    <div class="url">
+                        <a href="/account/email" class="active">Update email</a>
+                        <hr align="center">
+                    </div>
+        <% }else if (type=="cv") {%>
+            <div class="url">
+                <a href="/account/profile" >Profile</a>
+                <hr align="center">
+            </div>
+            <div class="url">
+                <a href="/account/cv" class="active">My CV</a>
+                <hr align="center">
+            </div>
+            <div class="url">
+                <a href="/account/upass">Update password</a>
+                <hr align="center">
+            </div>
+            <div class="url">
+                <a href="/account/email" class="active">Update email</a>
+                <hr align="center">
+            </div>
+        <% } else if (type == "pass") {%>
+            <div class="url">
+                <a href="/account/profile" >Profile</a>
+                <hr align="center">
+            </div>
+            <div class="url">
+                <a href="/account/cv">My CV</a>
+                <hr align="center">
+            </div>
+            <div class="url">
+                <a href="/account/upass" class="active">Update password</a>
+                <hr align="center">
+            </div>
+            <div class="url">
+                <a href="/account/email" class="active">Update email</a>
+                <hr align="center">
+            </div>
+            <% } else if (type == "email") {%>
+                <div class="url">
+                    <a href="/account/profile" >Profile</a>
+                    <hr align="center">
+                </div>
+                <div class="url">
+                    <a href="/account/cv">My CV</a>
+                    <hr align="center">
+                </div>
+                <div class="url">
+                    <a href="/account/upass">Update password</a>
+                    <hr align="center">
+                </div>
+                <div class="url">
+                    <a href="/account/email" class="active">Update email</a>
+                    <hr align="center">
+                </div>
+                <% } %>
+                
+            </div>
         </div>
+     
+    
+        <div class="main">
+            <h2>Personal Information</h2>
+           
+                    <% if(type=="profile") {%>
+                        <div class="card">
+                            <div class="card-body">
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>:</td>
+                                    <td><%= data.first_name%> <%= data.last_name%></td>
+                                </tr>
+                                <tr>
+                                    <td>Gender</td>
+                                    <td>:</td>
+                                    <td><%= data.gender%></td>
+                                </tr>
+                                <tr>
+                                    <td>Address</td>
+                                    <td>:</td>
+                                    <td><%= data.provinsi%>, <%= data.address%></td>
+                                </tr>
+                                <tr>
+                                    <td>Phone</td>
+                                    <td>:</td>
+                                    <td><%= data.nomor%></td>
+                                </tr>
+                                <tr>
+                                    <td>Umur</td>
+                                    <td>:</td>
+                                    <td><%= data.umur%></td>
+                                </tr>
+                                <tr>
+                                    <td>Email</td>
+                                    <td>:</td>
+                                    <td><%= data.email%></td>
+                                </tr>
+                                <tr>
+                                    <td>Experience</td>
+                                    <td>:</td>
+                                    <td><%= data.pengalaman_text%></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    
+                    <i class="fa fa-pen fa-xs edit"></i>
+                </div>
+            </div>
+            <% }else if (type=="cv") {%>
+                <div class="row">
+                    <div class="col-md-12 p-4">
+                        <div class="resume">
+                            <div class="resume_left">
+                              <div class="resume_content">
+                                <div class="resume_item resume_info">
+                                  <div class="title">
+                                    <p class="bold"><%= data.first_name%> <%= data.last_name%></p>
+                                    <p><%= data.gender%></p>
+                                  </div>
+                                  <ul>
+                                    <li>
+                                      <div class="icon">
+                                        <i class="fas fa-mobile-alt"></i>
+                                      </div>
+                                      <div class="data">
+                                        <%= data.nomor%>
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <div class="icon">
+                                        <i class="fas fa-envelope"></i>
+                                      </div>
+                                      <div class="data">
+                                        <%= data.email%>
+                                      </div>
+                                    </li>
+                    
+                                  </ul>
+                                </div>
+                                <div class="resume_item resume_skills">
+                                 <div class="title">
+                                   <p class="bold">Alamat</p>
+                                 </div>
+                                 <ul>
+                                   <li>
+            
+                                      <%= data.address%> <%= data.provinsi%>
+                                    
+                                   </li>
+                                   
+                                 </ul>
+                               </div>
+                                <div class="resume_item resume_social">
+                                  <div class="title">
+                                    <p class="bold">Graduation</p>
+                                  </div>
+                                  <ul>
+                                    <li>
+                                      <div class="data">
+                                        <p class="semi-bold"><%= data.pendidikan%></p>
+                                        <p><%= data.pendidikan_text%> <%= data.jurusan%></p>
+                                      </div>
+                                    </li>
+                                  </ul>
+                                </div>
+                              </div>
+                           </div>
+                           <div class="resume_right">
+                             <div class="resume_item resume_about">
+                                 <div class="title">
+                                   <p class="bold">About me</p>
+                                 </div>
+                                <p><%= data.ket%></p>
+                            </div>
+                            <div class="resume_item resume_work">
+                                <div class="title">
+                                   <p class="bold">Work Experience</p>
+                                 </div>
+                                <ul>
+                                     <li>
+                                         <div class="info">
+                                           <p><%= data.skill%></p>
+                                         </div>
+                                     </li>
+                                </ul>
+                            </div>
+                           </div>
+                        </div>
+                    </div>
+                </div>
+            <% } else if (type == "pass") {%>
+                <div class="card">
+                    <div class="card-body">
+                        <h1>Update password</h1>
+                         
+                            <form method="post" action="/account/upasss">
+                      
+                              <div class="form-group">
+                                <label for="inputEmail">New password</label>
+                                <input type="password" class="form-control" name="npass" id="inputEmail" placeholder="password">
+                              </div>
+                            <div class="form-group">
+                              <label for="inputPassword">Write again new Password</label>
+                              <input type="password" class="form-control" name="npass_" id="inputPassword" placeholder="password">
+                            </div> 
+                            <div class="form-group">
+                                <label for="inputPassword">Old password</label>
+                                <input type="password" class="form-control" name="pass" id="inputPassword" placeholder="password">
+                              </div>  
+                            <button type="submit" class="btn btn-info">Update</button>
+                            <% if(locals.error) { %>
+                              <span class="text-danger pl-2" style="font-size: 2.2vh"><%= error %></span>
+                              <% } %>
+                          </form>
+                    </div>
+                </div>
+                <% } else if (type == "email") {%>
+                    <div class="card">
+                        <div class="card-body">
+                            <h1>Update password</h1>
+                             
+                                <form method="post" action="/account/uemail">
+                          
+                                  <div class="form-group">
+                                    <label for="inputEmail">New email</label>
+                                    <input type="email" class="form-control" name="email" id="inputEmail" placeholder="contoh@email.com">
+                                  </div>
+                                  <label for="inputEmail">Input password</label>
+                                    <input type="password" class="form-control" name="pass" id="inputEmail" placeholder="password">
+                                  </div>  
+                                <button type="submit" class="btn btn-info">Update</button>
+                                <% if(locals.error) { %>
+                                  <span class="text-danger pl-2" style="font-size: 2.2vh"><%= error %></span>
+                                  <% } %>
+                              </form>
+                        </div>
+                    </div>
+                    <% } %>
+        </div>
+        <% }) %>
     </div>
+
+   
     
 </body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+      
+        
+              <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </html>

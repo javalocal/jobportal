@@ -1,23 +1,23 @@
 
 @import url(https://fonts.googleapis.com/css?family=Dancing+Script);
-
+/* 
 * {
     margin: 0;
-}
+} */
 
-body {
+/* body {
     background-color: #e8f5ff;
     font-family: Arial;
     overflow: hidden;
-}
+} */
 
-.navbar-top {
+/* .navbar-top {
     background-color: #fff;
     color: #333;
     box-shadow: 0px 4px 8px 0px grey;
     height: 70px;
-}
-
+} */
+/* 
 .title {
     font-family: 'Dancing Script', cursive;
     padding-top: 15px;
@@ -52,7 +52,7 @@ body {
     left: -25px;
     padding: 2px;
     position: relative;
-}
+} */
 
 .sidenav {
     background-color: #fff;
@@ -73,10 +73,10 @@ body {
     text-align: center;
 }
 
-.profile img {
+/* .profile img {
     border-radius: 50%;
     box-shadow: 0px 0px 5px 1px grey;
-}
+} */ 
 
 .name {
     font-size: 20px;
@@ -151,41 +151,4 @@ body {
     position: absolute;
     color: #e7e7e8;
     right: 14%;
-}
-
-.social-media {
-    text-align: center;
-    width: 90%;
-}
-
-.social-media span {
-    margin: 0 10px;
-}
-
-.fa-facebook:hover {
-    color: #4267b3 !important;
-}
-
-.fa-twitter:hover {
-    color: #1da1f2 !important;
-}
-
-.fa-instagram:hover {
-    color: #ce2b94 !important;
-}
-
-.fa-invision:hover {
-    color: #f83263 !important;
-}
-
-.fa-github:hover {
-    color: #161414 !important;
-}
-
-.fa-whatsapp:hover {
-    color: #25d366 !important;
-}
-
-.fa-snapchat:hover {
-    color: #fffb01 !important;
 }
